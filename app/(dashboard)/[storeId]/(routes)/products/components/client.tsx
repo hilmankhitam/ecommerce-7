@@ -9,13 +9,13 @@ import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
-import { ColorColumn, columns } from "./columns";
+import { ProductColumn, columns } from "./columns";
 
-interface ColorClientProps {
-    data: ColorColumn[]
+interface ProductClientProps {
+    data: ProductColumn[]
 }
 
-export const BillboardClient: React.FC<ColorClientProps> = ({ data }) => {
+export const ProductClient: React.FC<ProductClientProps> = ({ data }) => {
     const params = useParams();
     const router = useRouter();
 
@@ -23,17 +23,17 @@ export const BillboardClient: React.FC<ColorClientProps> = ({ data }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <Heading title={`Colors (${data.length})`} description="Manage Colors for your store" />
-                <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
+                <Heading title={`Products (${data.length})`} description="Manage Products for your store" />
+                <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
                     <Plus className="mr-2 w-4 h-4" />
                     Add New
                 </Button>
             </div>
             <Separator />
             <DataTable searchKey="name" columns={columns} data={data} />
-            <Heading title="API" description="API calls for colors" />
+            <Heading title="API" description="API calls for products" />
             <Separator />
-            <ApiList entityName="colors" entityIdName="colorId"/>
+            <ApiList entityName="products" entityIdName="productId"/>
         </>
     );
 }
