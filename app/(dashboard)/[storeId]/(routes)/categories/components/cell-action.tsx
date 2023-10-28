@@ -24,11 +24,6 @@ export const CellAction: React.FC<CellActionProps> = ({
 
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, [])
 
     const onCopy = (id: string) => {
         navigator.clipboard.writeText(id);
@@ -47,10 +42,6 @@ export const CellAction: React.FC<CellActionProps> = ({
             setLoading(false);
             setOpen(false);
         }
-    }
-
-    if (!isMounted) {
-        return null;
     }
 
     return (
